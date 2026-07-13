@@ -3,7 +3,16 @@ import Reveal from "@/components/Reveal";
 export default function Artist() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-24">
-      <h1 className="text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
+      <Reveal className="overflow-hidden rounded-lg border border-border">
+        <img
+          src="/images/artist/hero.jpg"
+          alt="Kachama Perez in her weaving studio"
+          loading="lazy"
+          className="aspect-[3/2] w-full object-cover"
+        />
+      </Reveal>
+
+      <h1 className="mt-12 text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
         ARTIST
       </h1>
       <p className="mt-4 text-xl tracking-widest text-muted-foreground">
