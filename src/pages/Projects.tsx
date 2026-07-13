@@ -1,8 +1,26 @@
 import Lightbox, { type GalleryImage } from "@/components/Lightbox";
 
+const THUMB_EXT: Record<number, string> = {
+  1: "jpg",
+  2: "png",
+  3: "png",
+  4: "png",
+  5: "jpg",
+  6: "png",
+  7: "png",
+  8: "png",
+  9: "png",
+  10: "png",
+  11: "png",
+  12: "png",
+  13: "png",
+  14: "png",
+  15: "jpg",
+};
+
 function images(alt: string, nums: number[]): GalleryImage[] {
   return nums.map((n) => ({
-    thumb: `/images/projects/project-${n}.${n === 1 || n === 5 ? "jpg" : "png"}`,
+    thumb: `/images/projects/project-${n}.${THUMB_EXT[n]}`,
     full: `/images/projects/full/project-${n}.jpg`,
     alt,
   }));
@@ -15,7 +33,7 @@ const exhibitions = [
     year: "2015",
     venue: "Tamarind Village Hotel",
     location: "Chiang Mai, Thailand",
-    images: images("Songs of My Soul (2015), Tamarind Village Hotel, Chiang Mai", [1, 2]),
+    images: images("Songs of My Soul (2015), Tamarind Village Hotel, Chiang Mai", [1, 2, 9, 10, 11]),
   },
   {
     type: "Exhibition",
@@ -31,7 +49,7 @@ const exhibitions = [
     year: "2018",
     venue: "Residence of H.E. German Ambassador",
     location: "Bangkok, Thailand",
-    images: [] as GalleryImage[],
+    images: images("Feathers and Souls (2018), Residence of H.E. German Ambassador, Bangkok", [12, 13, 14]),
   },
   {
     type: "Tapestries and Pillows",
@@ -39,7 +57,7 @@ const exhibitions = [
     year: "",
     venue: "",
     location: "Chiang Mai, Thailand",
-    images: [] as GalleryImage[],
+    images: images("Tapestries and Pillows, Oasis Baan Sean Doi Spa and Resort, Chiang Mai", [15]),
   },
   {
     type: "Presentation",
