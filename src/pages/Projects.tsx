@@ -1,0 +1,103 @@
+import Lightbox, { type GalleryImage } from "@/components/Lightbox";
+
+function images(alt: string, nums: number[]): GalleryImage[] {
+  return nums.map((n) => ({
+    thumb: `/images/projects/project-${n}.${n === 1 || n === 5 ? "jpg" : "png"}`,
+    full: `/images/projects/full/project-${n}.jpg`,
+    alt,
+  }));
+}
+
+const exhibitions = [
+  {
+    type: "Exhibition",
+    title: "Songs of My Soul",
+    year: "2015",
+    venue: "Tamarind Village Hotel",
+    location: "Chiang Mai, Thailand",
+    images: images("Songs of My Soul (2015), Tamarind Village Hotel, Chiang Mai", [1, 2]),
+  },
+  {
+    type: "Exhibition",
+    title: "Songs of My Soul",
+    year: "2016",
+    venue: "Rayavadee Resort",
+    location: "Krabi, Thailand",
+    images: images("Songs of My Soul (2016), Rayavadee Resort, Krabi", [3, 4, 5]),
+  },
+  {
+    type: "Exhibition",
+    title: "Feathers and Souls",
+    year: "2018",
+    venue: "Residence of H.E. German Ambassador",
+    location: "Bangkok, Thailand",
+    images: [] as GalleryImage[],
+  },
+  {
+    type: "Tapestries and Pillows",
+    title: "Oasis Baan Sean Doi Spa and Resort",
+    year: "",
+    venue: "",
+    location: "Chiang Mai, Thailand",
+    images: [] as GalleryImage[],
+  },
+  {
+    type: "Presentation",
+    title: "WOHA Architectural Practice",
+    year: "",
+    venue: "",
+    location: "Singapore",
+    images: images("WOHA Architectural Practice, Singapore", [6]),
+  },
+  {
+    type: "Space Partitions",
+    title: "Crowne Plaza Hotel",
+    year: "",
+    venue: "",
+    location: "Changi Airport, Singapore",
+    images: images("Space Partitions, Crowne Plaza Hotel, Changi Airport", [7, 8]),
+  },
+];
+
+export default function Projects() {
+  return (
+    <section className="mx-auto max-w-6xl px-6 py-24">
+      <h1 className="text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
+        PROJECTS
+      </h1>
+      <p className="mt-4 text-sm text-muted-foreground">
+        Click any piece to view it in full detail.
+      </p>
+
+      <div className="mt-16 space-y-20">
+        {exhibitions.map((ex, i) => (
+          <div key={i}>
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {ex.type}
+                </p>
+                <p className="mt-1 text-lg font-medium">
+                  {ex.title}
+                  {ex.year && (
+                    <span className="text-muted-foreground"> ({ex.year})</span>
+                  )}
+                </p>
+              </div>
+              <div className="text-sm text-muted-foreground sm:text-right">
+                {ex.venue && <p>{ex.venue}</p>}
+                <p>{ex.location}</p>
+              </div>
+            </div>
+
+            {ex.images.length > 0 && (
+              <div className="mt-6">
+                <Lightbox images={ex.images} />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
