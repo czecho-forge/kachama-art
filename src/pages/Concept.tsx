@@ -27,6 +27,28 @@ export default function Concept() {
             className="aspect-square w-full object-cover"
           />
         </Reveal>
+        <Reveal
+          delay={240}
+          className="overflow-hidden rounded-lg border border-border"
+        >
+          <img
+            src="/images/concept/concept-4.png"
+            alt="Bamboo weaving tools on the loom"
+            loading="lazy"
+            className="aspect-square w-full object-cover"
+          />
+        </Reveal>
+        <Reveal
+          delay={360}
+          className="overflow-hidden rounded-lg border border-border"
+        >
+          <img
+            src="/images/concept/concept-3.png"
+            alt="Woven detail evoking peacock feathers"
+            loading="lazy"
+            className="aspect-square w-full object-cover"
+          />
+        </Reveal>
       </div>
 
       <div className="mt-12 space-y-6 text-lg leading-relaxed text-muted-foreground">
