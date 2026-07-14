@@ -1,8 +1,14 @@
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 
 export default function Concept() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-24">
+      <Seo
+        title="The Concept — Contemporary Thai Weaving Art | Kachama Art"
+        description="Discover the concept behind Kachama's handwoven textile art: silk, natural and found materials woven with traditional hill-tribe patterns from Northern Thailand into contemporary wall hangings and tapestries."
+        path="/concept"
+      />
       <h1 className="text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
         CONCEPT
       </h1>
@@ -11,7 +17,7 @@ export default function Concept() {
         <Reveal className="overflow-hidden rounded-lg border border-border">
           <img
             src="/images/concept/concept-1.jpg"
-            alt="Kachama weaving detail"
+            alt="Detail of Kachama Perez weaving silk and mixed fibers on the loom"
             loading="lazy"
             className="aspect-square w-full object-cover"
           />
@@ -22,7 +28,7 @@ export default function Concept() {
         >
           <img
             src="/images/concept/concept-2.jpg"
-            alt="Kachama material detail"
+            alt="Close-up of natural and synthetic weaving materials used in Kachama's textile art"
             loading="lazy"
             className="aspect-square w-full object-cover"
           />
@@ -94,7 +100,7 @@ export default function Concept() {
         <Reveal>
           <img
             src="/images/concept/soul-1.png"
-            alt="Songs of My Soul"
+            alt="Songs of My Soul handwoven wall hanging by Kachama Perez, full view"
             loading="lazy"
             className="w-full rounded-lg border border-border"
           />
@@ -102,7 +108,7 @@ export default function Concept() {
         <Reveal delay={120}>
           <img
             src="/images/concept/soul-2.png"
-            alt="Songs of My Soul"
+            alt="Songs of My Soul handwoven wall hanging by Kachama Perez, detail view"
             loading="lazy"
             className="w-full rounded-lg border border-border"
           />

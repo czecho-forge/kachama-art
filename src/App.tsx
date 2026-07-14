@@ -4,6 +4,8 @@ import Home from "@/pages/Home";
 import Concept from "@/pages/Concept";
 import Artist from "@/pages/Artist";
 import Projects from "@/pages/Projects";
+import Journal from "@/pages/Journal";
+import JournalPost from "@/pages/JournalPost";
 import Contact from "@/pages/Contact";
 
 export default function App() {
@@ -17,6 +19,8 @@ export default function App() {
             <Route path="/concept" element={<Concept />} />
             <Route path="/artist" element={<Artist />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/journal" element={<Journal />} />
+            <Route path="/journal/:slug" element={<JournalPost />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

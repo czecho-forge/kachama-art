@@ -1,12 +1,38 @@
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Kachama Perez",
+  jobTitle: "Textile Artist",
+  url: "https://kachama.art/artist",
+  image: "https://kachama.art/images/artist/hero.jpg",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chiang Mai",
+    addressCountry: "TH",
+  },
+  description:
+    "Chiang Mai-based textile artist renewing traditional Thai hill-tribe weaving into contemporary handwoven wall hangings.",
+};
 
 export default function Artist() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-24">
+      <Seo
+        title="Kachama Perez — Textile Artist in Chiang Mai, Thailand | Kachama Art"
+        description="Meet Kachama Perez, a Chiang Mai-based weaving artist renewing traditional Thai hill-tribe textile craft into contemporary handwoven wall hangings, exhibited internationally from Lyon to Hong Kong."
+        path="/artist"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <Reveal className="overflow-hidden rounded-lg border border-border">
         <img
           src="/images/artist/hero.jpg"
-          alt="Kachama Perez in her weaving studio"
+          alt="Kachama Perez, textile artist, in her weaving studio in Chiang Mai, Thailand"
           loading="lazy"
           className="aspect-[3/2] w-full object-cover"
         />

@@ -1,15 +1,30 @@
 import { Link } from "react-router-dom";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 
 const featured = [
-  "/images/home/home-3.jpg",
-  "/images/home/home-4.jpg",
-  "/images/projects/project-5.jpg",
+  {
+    src: "/images/home/home-3.jpg",
+    alt: "Handwoven silk wall hanging by textile artist Kachama Perez, Chiang Mai, Thailand",
+  },
+  {
+    src: "/images/home/home-4.jpg",
+    alt: "Detail of a handwoven wall hanging combining silk and natural fibers by Kachama Perez",
+  },
+  {
+    src: "/images/projects/project-5.jpg",
+    alt: "Songs of My Soul (2016) handwoven wall hanging, Rayavadee Resort, Krabi",
+  },
 ];
 
 export default function Home() {
   return (
     <>
+      <Seo
+        title="Handwoven Wall Hangings from Chiang Mai, Thailand | Kachama Art"
+        description="Kachama Perez creates one-of-a-kind handwoven wall hangings and textile art in Chiang Mai, Thailand — blending silk, natural fibers, and hill-tribe weaving traditions into contemporary art for homes, hotels, and galleries."
+        path="/"
+      />
       <section className="mx-auto flex max-w-6xl flex-col items-center px-6 py-28 text-center">
         <p className="animate-fade-in text-sm uppercase tracking-[0.3em] text-muted-foreground [animation-delay:100ms] [animation-fill-mode:backwards]">
           Textile Artist · Chiang Mai, Thailand
@@ -40,15 +55,15 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-6 pb-28">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {featured.map((src, i) => (
+          {featured.map((item, i) => (
             <Reveal
-              key={i}
+              key={item.src}
               delay={i * 120}
               className="overflow-hidden rounded-lg border border-border"
             >
               <img
-                src={src}
-                alt={`Featured work ${i + 1}`}
+                src={item.src}
+                alt={item.alt}
                 loading="lazy"
                 className="aspect-[3/4] w-full object-cover transition-transform duration-500 hover:scale-105"
               />

@@ -6,10 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "node --env-file-if-exists=.env scripts/generate-sitemap.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@portabletext/react": "^6.2.0",
+    "@sanity/client": "^7.23.1",
+    "@sanity/image-url": "^2.1.1",
     "@tanstack/react-query": "^5.101.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -1,6 +1,13 @@
+import Seo from "@/components/Seo";
+
 export default function Contact() {
   return (
     <section className="mx-auto max-w-2xl px-6 py-24">
+      <Seo
+        title="Contact — Kachama Art Weaving Studio, Chiang Mai"
+        description="Get in touch with Kachama Art to visit the Chiang Mai showroom by appointment, inquire about available handwoven wall hangings, or discuss a custom textile art commission."
+        path="/contact"
+      />
       <h1 className="text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
         CONTACT
       </h1>

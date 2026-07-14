@@ -1,4 +1,5 @@
 import Lightbox, { type GalleryImage } from "@/components/Lightbox";
+import Seo from "@/components/Seo";
 
 const THUMB_EXT: Record<number, string> = {
   1: "jpg",
@@ -22,7 +23,7 @@ function images(alt: string, nums: number[]): GalleryImage[] {
   return nums.map((n) => ({
     thumb: `/images/projects/project-${n}.${THUMB_EXT[n]}`,
     full: `/images/projects/full/project-${n}.jpg`,
-    alt,
+    alt: `Handwoven wall hanging — ${alt}`,
   }));
 }
 
@@ -77,9 +78,35 @@ const exhibitions = [
   },
 ];
 
+const projectsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: exhibitions.map((ex, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "VisualArtwork",
+      name: ex.title,
+      artform: "Handwoven textile wall hanging",
+      creator: { "@type": "Person", name: "Kachama Perez" },
+      ...(ex.year && { dateCreated: ex.year }),
+      locationCreated: ex.location,
+    },
+  })),
+};
+
 export default function Projects() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
+      <Seo
+        title="Projects & Exhibitions — Handwoven Wall Hangings | Kachama Art"
+        description="Browse Kachama's exhibitions and commissioned handwoven wall hangings and tapestries, shown at hotels, resorts, and galleries across Thailand, Singapore, and beyond."
+        path="/projects"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
+      />
       <h1 className="text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
         PROJECTS
       </h1>

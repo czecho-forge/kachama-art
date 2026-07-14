@@ -5,6 +5,7 @@ const links = [
   { to: "/concept", label: "CONCEPT" },
   { to: "/artist", label: "ARTIST" },
   { to: "/projects", label: "PROJECTS" },
+  { to: "/journal", label: "JOURNAL" },
   { to: "/contact", label: "CONTACT" },
 ];
 
