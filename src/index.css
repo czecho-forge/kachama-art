@@ -3,33 +3,47 @@
 @tailwind utilities;
 
 @layer base {
+  /*
+   * Direction A — "Indigo ground, red signature"
+   * Unbleached-cotton page, vat-indigo feature bands, madder-red actions.
+   * All values are HSL triples consumed via hsl(var(--x)).
+   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --border: 240 5.9% 90%;
-    --radius: 0.5rem;
+    --background: 43 55% 96%; /* unbleached cotton  #FBF8F1 */
+    --foreground: 215 28% 17%; /* indigo-black ink   #1F2937 */
+    --primary: 7 59% 41%; /* madder red         #A63A2B */
+    --primary-foreground: 43 55% 97%;
+    --secondary: 40 36% 92%; /* aged cloth surface */
+    --secondary-foreground: 215 28% 17%;
+    --muted: 40 36% 92%;
+    --muted-foreground: 215 16% 40%; /* washed denim */
+    --accent: 213 30% 90%; /* pale indigo wash */
+    --accent-foreground: 213 37% 21%;
+    --border: 40 26% 84%; /* warm cotton border */
+    --radius: 0.375rem;
+
+    /* Site-specific tokens */
+    --indigo: 213 37% 21%; /* vat indigo    #22344A */
+    --indigo-deep: 214 40% 15%; /* midnight vat  #17222F-ish */
+    --indigo-foreground: 43 55% 97%; /* cotton on indigo */
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
+    --background: 214 40% 12%;
+    --foreground: 43 55% 96%;
+    --primary: 10 62% 55%;
+    --primary-foreground: 43 55% 97%;
+    --secondary: 213 35% 18%;
+    --secondary-foreground: 43 55% 96%;
+    --muted: 213 35% 18%;
+    --muted-foreground: 215 20% 70%;
+    --accent: 213 35% 24%;
+    --accent-foreground: 43 55% 96%;
+    --border: 213 30% 24%;
+
+    --indigo: 213 37% 21%;
+    --indigo-deep: 214 40% 10%;
+    --indigo-foreground: 43 55% 97%;
   }
 
   * {
@@ -37,8 +51,12 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-foreground antialiased;
     margin: 0;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.18);
   }
 
   /* Accessibility + robustness: never leave entrance-animated content
@@ -51,5 +69,19 @@
       opacity: 1 !important;
       transform: none !important;
     }
+  }
+}
+
+@layer utilities {
+  /* Faint horizontal weft lines for indigo bands — reads as woven cloth
+     at a glance without competing with photography. */
+  .weave-texture {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 3px,
+      hsl(var(--indigo-foreground) / 0.03) 3px,
+      hsl(var(--indigo-foreground) / 0.03) 4px
+    );
   }
 }

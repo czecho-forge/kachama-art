@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { fetchJournalPosts, urlForImage, isSanityConfigured } from "@/lib/sanity";
+import WeaveDivider from "@/components/WeaveDivider";
 
 export default function Journal() {
   const { data: posts, isLoading } = useQuery({
@@ -18,9 +19,10 @@ export default function Journal() {
         description="Editorial updates from Kachama Perez's Chiang Mai weaving studio — new handwoven wall hangings, materials, and exhibitions."
         path="/journal"
       />
-      <h1 className="text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
-        JOURNAL
+      <h1 className="text-center font-display text-4xl font-medium tracking-tight sm:text-5xl">
+        Journal
       </h1>
+      <WeaveDivider className="mt-6" />
 
       {!isSanityConfigured && (
         <p className="mt-10 text-sm text-muted-foreground">
@@ -44,7 +46,7 @@ export default function Journal() {
           <Reveal key={post._id} delay={i * 100}>
             <Link to={`/journal/${post.slug}`} className="group block">
               {post.coverImage ? (
-                <div className="overflow-hidden rounded-lg border border-border">
+                <div className="overflow-hidden rounded-md border border-border">
                   <img
                     src={urlForImage(post.coverImage)
                       ?.width(1200)
@@ -64,7 +66,7 @@ export default function Journal() {
                   day: "numeric",
                 })}
               </p>
-              <h2 className="mt-1 text-xl font-medium group-hover:underline">
+              <h2 className="mt-1 text-xl font-medium underline-offset-4 transition-colors group-hover:text-primary group-hover:underline">
                 {post.title}
               </h2>
               {post.excerpt && (

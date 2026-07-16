@@ -1,5 +1,6 @@
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
+import WeaveDivider from "@/components/WeaveDivider";
 
 export default function Concept() {
   return (
@@ -9,12 +10,13 @@ export default function Concept() {
         description="Discover the concept behind Kachama's handwoven textile art: silk, natural and found materials woven with traditional hill-tribe patterns from Northern Thailand into contemporary wall hangings and tapestries."
         path="/concept"
       />
-      <h1 className="text-3xl font-semibold tracking-[0.2em] sm:text-4xl">
-        CONCEPT
+      <h1 className="text-center font-display text-4xl font-medium tracking-tight sm:text-5xl">
+        The Concept
       </h1>
+      <WeaveDivider className="mt-6" />
 
       <div className="mt-10 grid grid-cols-2 gap-4">
-        <Reveal className="overflow-hidden rounded-lg border border-border">
+        <Reveal className="overflow-hidden rounded-md border border-border">
           <img
             src="/images/concept/concept-1.jpg"
             alt="Detail of Kachama Perez weaving silk and mixed fibers on the loom"
@@ -24,7 +26,7 @@ export default function Concept() {
         </Reveal>
         <Reveal
           delay={120}
-          className="overflow-hidden rounded-lg border border-border"
+          className="overflow-hidden rounded-md border border-border"
         >
           <img
             src="/images/concept/concept-2.jpg"
@@ -35,7 +37,7 @@ export default function Concept() {
         </Reveal>
         <Reveal
           delay={240}
-          className="overflow-hidden rounded-lg border border-border"
+          className="overflow-hidden rounded-md border border-border"
         >
           <img
             src="/images/concept/concept-4.png"
@@ -46,7 +48,7 @@ export default function Concept() {
         </Reveal>
         <Reveal
           delay={360}
-          className="overflow-hidden rounded-lg border border-border"
+          className="overflow-hidden rounded-md border border-border"
         >
           <img
             src="/images/concept/concept-3.png"
@@ -102,7 +104,7 @@ export default function Concept() {
             src="/images/concept/soul-1.png"
             alt="Songs of My Soul handwoven wall hanging by Kachama Perez, full view"
             loading="lazy"
-            className="w-full rounded-lg border border-border"
+            className="w-full rounded-md border border-border"
           />
         </Reveal>
         <Reveal delay={120}>
@@ -110,7 +112,7 @@ export default function Concept() {
             src="/images/concept/soul-2.png"
             alt="Songs of My Soul handwoven wall hanging by Kachama Perez, detail view"
             loading="lazy"
-            className="w-full rounded-lg border border-border"
+            className="w-full rounded-md border border-border"
           />
         </Reveal>
       </div>

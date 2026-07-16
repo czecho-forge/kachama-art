@@ -44,7 +44,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
             key={i}
             onClick={() => setOpenIndex(i)}
             style={{ animationDelay: `${i * 80}ms`, animationFillMode: "backwards" }}
-            className="group animate-fade-up overflow-hidden rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-ring"
+            className="group animate-fade-up overflow-hidden rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
             aria-label={`View ${img.alt} full size`}
           >
             <img

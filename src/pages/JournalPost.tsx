@@ -61,7 +61,7 @@ export default function JournalPost() {
             <img
               src={urlForImage(post.coverImage)?.width(1600).url()}
               alt={post.title}
-              className="w-full rounded-lg border border-border"
+              className="w-full rounded-md border border-border"
             />
           ) : null}
           <p className="mt-8 text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -71,10 +71,10 @@ export default function JournalPost() {
               day: "numeric",
             })}
           </p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight">
+          <h1 className="mt-2 font-display text-3xl font-medium tracking-tight sm:text-4xl">
             {post.title}
           </h1>
-          <div className="prose prose-neutral mt-10 max-w-none dark:prose-invert">
+          <div className="prose prose-stone mt-10 max-w-none dark:prose-invert">
             <PortableText value={post.body} />
           </div>
         </article>

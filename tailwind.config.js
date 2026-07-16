@@ -4,7 +4,16 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Hanken Grotesk"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+      },
       colors: {
+        indigo: {
+          DEFAULT: "hsl(var(--indigo))",
+          deep: "hsl(var(--indigo-deep))",
+          foreground: "hsl(var(--indigo-foreground))",
+        },
         border: "hsl(var(--border))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
