@@ -63,13 +63,7 @@ export default function App() {
                 <p className="tracking-widest text-indigo-foreground/70">
                   INQUIRIES
                 </p>
-                <a
-                  href="mailto:kachama.art@gmail.com"
-                  className="mt-2 inline-block underline decoration-primary decoration-2 underline-offset-4 transition-colors hover:text-indigo-foreground/70"
-                >
-                  kachama.art@gmail.com
-                </a>
-                <p className="mt-4 text-indigo-foreground/70">
+                <p className="mt-2 text-indigo-foreground/70">
                   Galleries, curators & collectors —{" "}
                   <Link
                     to="/contact"
