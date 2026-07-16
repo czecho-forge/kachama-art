@@ -4,8 +4,8 @@ import Seo from "@/components/Seo";
 
 const featured = [
   {
-    src: "/images/home/home-3.jpg",
-    alt: "Handwoven silk wall hanging by textile artist Kachama Perez, Chiang Mai, Thailand",
+    src: "/images/home/home-6.jpg",
+    alt: "Kachama Perez pouring silk cocoons into a wooden bowl, textile artist, Chiang Mai, Thailand",
   },
   {
     src: "/images/home/home-4.jpg",

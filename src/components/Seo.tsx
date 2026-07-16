@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const SITE_URL = "https://kachama.art";
-const DEFAULT_IMAGE = "/images/home/home-3.jpg";
+const DEFAULT_IMAGE = "/images/home/home-6.jpg";
 
 interface SeoProps {
   title: string;
