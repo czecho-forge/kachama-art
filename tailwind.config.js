@@ -39,6 +39,9 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      transitionTimingFunction: {
+        "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",
+      },
       keyframes: {
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(28px)" },
@@ -48,11 +51,17 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        "hero-in": {
+          "0%": { opacity: "0", transform: "scale(1.05)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         // easeOutExpo-style curve: quick start, long silky deceleration
         "fade-up": "fade-up 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fade-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        // slow settle for hero imagery — a restrained Ken Burns landing
+        "hero-in": "hero-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
     },
   },

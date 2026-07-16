@@ -161,7 +161,7 @@ export default function Contact() {
         </div>
         <button
           type="submit"
-          className="w-full rounded-md bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto sm:px-8"
+          className="w-full rounded-md bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:px-8"
         >
           Send Inquiry
         </button>

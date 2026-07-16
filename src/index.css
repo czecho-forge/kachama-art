@@ -50,6 +50,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background font-sans text-foreground antialiased;
     margin: 0;
@@ -61,10 +65,14 @@
 
   /* Accessibility + robustness: never leave entrance-animated content
      invisible. Users who prefer reduced motion get instant, full-opacity
-     content with no animation. */
+     content with no animation or scroll smoothing. */
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
     .animate-fade-up,
-    .animate-fade-in {
+    .animate-fade-in,
+    .animate-hero-in {
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;

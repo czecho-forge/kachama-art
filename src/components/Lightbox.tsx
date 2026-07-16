@@ -51,7 +51,7 @@ export default function Lightbox({ images }: { images: GalleryImage[] }) {
               src={img.thumb}
               alt={img.alt}
               loading="lazy"
-              className="aspect-square w-full cursor-zoom-in object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              className="aspect-square w-full cursor-zoom-in object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
             />
           </button>
         ))}

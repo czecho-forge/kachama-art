@@ -164,7 +164,7 @@ export default function Artist() {
                   src={mat.src}
                   alt={mat.label}
                   loading="lazy"
-                  className="aspect-[3/4] w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out-expo hover:scale-[1.04]"
                 />
               </div>
               <figcaption className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">
@@ -205,7 +205,7 @@ export default function Artist() {
         </p>
         <Link
           to="/contact"
-          className="mt-8 inline-block rounded-md bg-primary px-7 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          className="mt-8 inline-block rounded-md bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
         >
           Start an Inquiry
         </Link>

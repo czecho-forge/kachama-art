@@ -207,7 +207,7 @@ export default function Projects() {
         </ul>
         <Link
           to="/contact"
-          className="mt-10 inline-block rounded-md bg-primary px-7 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          className="mt-10 inline-block rounded-md bg-primary px-7 py-3 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
         >
           Inquire About Available Work
         </Link>

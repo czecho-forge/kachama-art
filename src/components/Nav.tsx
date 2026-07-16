@@ -23,9 +23,11 @@ export default function Nav() {
               to={link.to}
               className={({ isActive }) =>
                 cn(
-                  "pb-1 text-muted-foreground transition-colors hover:text-primary",
-                  isActive &&
-                    "border-b border-primary text-foreground hover:text-foreground"
+                  "relative pb-1 text-muted-foreground transition-colors duration-300 hover:text-foreground",
+                  "after:absolute after:bottom-0 after:left-0 after:h-px after:bg-primary after:transition-all after:duration-300 after:ease-out-expo",
+                  isActive
+                    ? "text-foreground after:w-full"
+                    : "after:w-0 hover:after:w-full"
                 )
               }
             >

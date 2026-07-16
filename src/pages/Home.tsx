@@ -13,42 +13,75 @@ const collections = [
 
 const artwork = [
   {
-    src: "/images/home/home-4.jpg",
-    alt: "Detail of a handwoven wall hanging combining silk and natural fibers by Kachama Perez",
-    caption: "Silk and natural fiber, woven detail",
+    src: "/images/work/indigo-hanging-800.webp",
+    srcSet:
+      "/images/work/indigo-hanging-800.webp 800w, /images/work/indigo-hanging-1600.webp 1600w",
+    alt: "Translucent indigo and white handwoven hanging with bamboo rods, suspended in Kachama's open-air studio",
+    caption: "Indigo hanging — silk, cotton and bamboo",
+    width: 800,
+    height: 1000,
   },
   {
-    src: "/images/projects/project-5.jpg",
-    alt: "Songs of My Soul (2016) handwoven wall hanging, Rayavadee Resort, Krabi",
-    caption: "Songs of My Soul — Rayavadee Resort, Krabi",
+    src: "/images/work/heritage-silks-800.webp",
+    srcSet:
+      "/images/work/heritage-silks-800.webp 800w, /images/work/heritage-silks-1600.webp 1600w",
+    alt: "Antique Thai hill-tribe silks in gold and madder red with gilded hanging bars, wall installation",
+    caption: "Heritage silks — antique cloth and gilded bars",
+    width: 800,
+    height: 1000,
   },
 ];
 
 const studio = [
   {
-    src: "/images/home/home-7.jpg",
+    src: "/images/home/opt/loom-portrait-600.webp",
+    srcSet:
+      "/images/home/opt/loom-portrait-600.webp 600w, /images/home/opt/loom-portrait-1200.webp 1200w",
     alt: "Kachama Perez at her traditional loom, backlit in golden hour light, Chiang Mai, Thailand",
     caption: "At the loom",
+    width: 600,
+    height: 800,
+    wide: false,
   },
   {
-    src: "/images/home/home-8.jpg",
+    src: "/images/home/opt/loom-working-600.webp",
+    srcSet:
+      "/images/home/opt/loom-working-600.webp 600w, /images/home/opt/loom-working-1200.webp 1200w",
     alt: "Kachama Perez working the shuttle at her wooden loom, Chiang Mai, Thailand",
     caption: "Working the shuttle",
+    width: 600,
+    height: 800,
+    wide: false,
   },
   {
-    src: "/images/home/home-9.jpg",
+    src: "/images/home/opt/threading-600.webp",
+    srcSet:
+      "/images/home/opt/threading-600.webp 600w, /images/home/opt/threading-1200.webp 1200w",
     alt: "Kachama Perez threading silk cocoons onto the loom in her open-air workshop",
     caption: "Threading silk cocoons",
+    width: 600,
+    height: 800,
+    wide: false,
   },
   {
-    src: "/images/home/home-10.jpg",
+    src: "/images/home/opt/studio-book-900.webp",
+    srcSet:
+      "/images/home/opt/studio-book-900.webp 900w, /images/home/opt/studio-book-1800.webp 1800w",
     alt: "Kachama Perez reviewing a reference book of traditional textile designs in her studio",
     caption: "In the studio",
+    width: 900,
+    height: 600,
+    wide: true,
   },
   {
-    src: "/images/home/home-11.jpg",
+    src: "/images/home/opt/sketches-900.webp",
+    srcSet:
+      "/images/home/opt/sketches-900.webp 900w, /images/home/opt/sketches-1800.webp 1800w",
     alt: "Detail of textile design sketches and reference imagery in Kachama's studio",
     caption: "Sketches and references",
+    width: 900,
+    height: 600,
+    wide: true,
   },
 ];
 
@@ -62,7 +95,7 @@ export default function Home() {
       />
 
       {/* Hero — vat indigo band, her red on every action */}
-      <section className="weave-texture bg-indigo text-indigo-foreground">
+      <section className="weave-texture overflow-hidden bg-indigo text-indigo-foreground">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.1fr_1fr]">
           <div className="text-center lg:text-left">
             <p className="animate-fade-in text-sm uppercase tracking-[0.3em] text-indigo-foreground/60 [animation-delay:100ms] [animation-fill-mode:backwards]">
@@ -79,13 +112,13 @@ export default function Home() {
             <div className="mt-10 flex animate-fade-up flex-wrap justify-center gap-4 [animation-delay:500ms] [animation-fill-mode:backwards] lg:justify-start">
               <Link
                 to="/projects"
-                className="rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+                className="rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
               >
                 View the Work
               </Link>
               <Link
                 to="/contact"
-                className="rounded-md border border-indigo-foreground/30 px-6 py-3 text-sm font-medium transition-colors hover:border-indigo-foreground/60"
+                className="rounded-md border border-indigo-foreground/30 px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-foreground/60"
               >
                 Gallery & Collector Inquiries
               </Link>
@@ -93,10 +126,15 @@ export default function Home() {
           </div>
           <Reveal className="mx-auto w-full max-w-md lg:max-w-none">
             <img
-              src="/images/home/home-6.jpg"
+              src="/images/home/opt/hero-720.webp"
+              srcSet="/images/home/opt/hero-720.webp 720w, /images/home/opt/hero-1440.webp 1440w"
+              sizes="(min-width: 1024px) 480px, (min-width: 640px) 448px, 90vw"
               alt="Kachama Perez pouring silk cocoons into a wooden bowl in her dimly lit studio, Chiang Mai, Thailand"
-              className="aspect-[4/5] w-full rounded-md object-cover shadow-2xl ring-1 ring-indigo-foreground/10"
+              width={720}
+              height={900}
+              decoding="async"
               fetchPriority="high"
+              className="animate-hero-in aspect-[4/5] w-full rounded-md object-cover shadow-2xl ring-1 ring-indigo-foreground/10"
             />
           </Reveal>
         </div>
@@ -125,16 +163,21 @@ export default function Home() {
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {artwork.map((item, i) => (
             <Reveal key={item.src} delay={i * 120}>
-              <figure>
+              <figure className="group">
                 <div className="overflow-hidden rounded-md border border-border">
                   <img
                     src={item.src}
+                    srcSet={item.srcSet}
+                    sizes="(min-width: 640px) 45vw, 92vw"
                     alt={item.alt}
+                    width={item.width}
+                    height={item.height}
                     loading="lazy"
-                    className="aspect-[4/5] w-full object-cover transition-transform duration-500 hover:scale-105"
+                    decoding="async"
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
                   />
                 </div>
-                <figcaption className="mt-3 text-sm text-muted-foreground">
+                <figcaption className="mt-3 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
                   {item.caption}
                 </figcaption>
               </figure>
@@ -178,42 +221,56 @@ export default function Home() {
         </h2>
         <WeaveDivider className="mt-6" />
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {studio.slice(0, 3).map((item, i) => (
-            <Reveal key={item.src} delay={i * 120}>
-              <figure>
-                <div className="overflow-hidden rounded-md border border-border">
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    loading="lazy"
-                    className="aspect-[3/4] w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <figcaption className="mt-3 text-sm text-muted-foreground">
-                  {item.caption}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+          {studio
+            .filter((s) => !s.wide)
+            .map((item, i) => (
+              <Reveal key={item.src} delay={i * 120}>
+                <figure className="group">
+                  <div className="overflow-hidden rounded-md border border-border">
+                    <img
+                      src={item.src}
+                      srcSet={item.srcSet}
+                      sizes="(min-width: 640px) 30vw, 92vw"
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+                    {item.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
         </div>
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {studio.slice(3).map((item, i) => (
-            <Reveal key={item.src} delay={i * 120}>
-              <figure>
-                <div className="overflow-hidden rounded-md border border-border">
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    loading="lazy"
-                    className="aspect-[3/2] w-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <figcaption className="mt-3 text-sm text-muted-foreground">
-                  {item.caption}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+          {studio
+            .filter((s) => s.wide)
+            .map((item, i) => (
+              <Reveal key={item.src} delay={i * 120}>
+                <figure className="group">
+                  <div className="overflow-hidden rounded-md border border-border">
+                    <img
+                      src={item.src}
+                      srcSet={item.srcSet}
+                      sizes="(min-width: 640px) 45vw, 92vw"
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[3/2] w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+                    {item.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
         </div>
       </section>
 
@@ -231,7 +288,7 @@ export default function Home() {
           </p>
           <Link
             to="/contact"
-            className="mt-10 inline-block rounded-md bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="mt-10 inline-block rounded-md bg-primary px-8 py-3.5 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
           >
             Start an Inquiry
           </Link>

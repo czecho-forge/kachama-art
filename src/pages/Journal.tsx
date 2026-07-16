@@ -55,7 +55,7 @@ export default function Journal() {
                       .url()}
                     alt={post.title}
                     loading="lazy"
-                    className="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="aspect-[16/9] w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
                   />
                 </div>
               ) : null}
