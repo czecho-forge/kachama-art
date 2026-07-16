@@ -34,34 +34,25 @@ const artwork = [
 
 const studio = [
   {
-    src: "/images/home/opt/loom-portrait-600.webp",
+    src: "/images/home/opt/loom-portrait-900.webp",
     srcSet:
-      "/images/home/opt/loom-portrait-600.webp 600w, /images/home/opt/loom-portrait-1200.webp 1200w",
+      "/images/home/opt/loom-portrait-900.webp 900w, /images/home/opt/loom-portrait-1800.webp 1800w",
     alt: "Kachama Perez at her traditional loom, backlit in golden hour light, Chiang Mai, Thailand",
     caption: "At the loom",
-    width: 600,
-    height: 800,
-    wide: false,
   },
   {
-    src: "/images/home/opt/loom-working-600.webp",
+    src: "/images/home/opt/loom-working-900.webp",
     srcSet:
-      "/images/home/opt/loom-working-600.webp 600w, /images/home/opt/loom-working-1200.webp 1200w",
+      "/images/home/opt/loom-working-900.webp 900w, /images/home/opt/loom-working-1800.webp 1800w",
     alt: "Kachama Perez working the shuttle at her wooden loom, Chiang Mai, Thailand",
     caption: "Working the shuttle",
-    width: 600,
-    height: 800,
-    wide: false,
   },
   {
-    src: "/images/home/opt/threading-600.webp",
+    src: "/images/home/opt/threading-900.webp",
     srcSet:
-      "/images/home/opt/threading-600.webp 600w, /images/home/opt/threading-1200.webp 1200w",
+      "/images/home/opt/threading-900.webp 900w, /images/home/opt/threading-1800.webp 1800w",
     alt: "Kachama Perez threading silk cocoons onto the loom in her open-air workshop",
     caption: "Threading silk cocoons",
-    width: 600,
-    height: 800,
-    wide: false,
   },
   {
     src: "/images/home/opt/studio-book-900.webp",
@@ -69,9 +60,6 @@ const studio = [
       "/images/home/opt/studio-book-900.webp 900w, /images/home/opt/studio-book-1800.webp 1800w",
     alt: "Kachama Perez reviewing a reference book of traditional textile designs in her studio",
     caption: "In the studio",
-    width: 900,
-    height: 600,
-    wide: true,
   },
   {
     src: "/images/home/opt/sketches-900.webp",
@@ -79,9 +67,6 @@ const studio = [
       "/images/home/opt/sketches-900.webp 900w, /images/home/opt/sketches-1800.webp 1800w",
     alt: "Detail of textile design sketches and reference imagery in Kachama's studio",
     caption: "Sketches and references",
-    width: 900,
-    height: 600,
-    wide: true,
   },
 ];
 
@@ -220,57 +205,29 @@ export default function Home() {
           From the Studio
         </h2>
         <WeaveDivider className="mt-6" />
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {studio
-            .filter((s) => !s.wide)
-            .map((item, i) => (
-              <Reveal key={item.src} delay={i * 120}>
-                <figure className="group">
-                  <div className="overflow-hidden rounded-md border border-border">
-                    <img
-                      src={item.src}
-                      srcSet={item.srcSet}
-                      sizes="(min-width: 640px) 30vw, 92vw"
-                      alt={item.alt}
-                      width={item.width}
-                      height={item.height}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-[3/4] w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
-                    />
-                  </div>
-                  <figcaption className="mt-3 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                    {item.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-        </div>
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {studio
-            .filter((s) => s.wide)
-            .map((item, i) => (
-              <Reveal key={item.src} delay={i * 120}>
-                <figure className="group">
-                  <div className="overflow-hidden rounded-md border border-border">
-                    <img
-                      src={item.src}
-                      srcSet={item.srcSet}
-                      sizes="(min-width: 640px) 45vw, 92vw"
-                      alt={item.alt}
-                      width={item.width}
-                      height={item.height}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-[3/2] w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
-                    />
-                  </div>
-                  <figcaption className="mt-3 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                    {item.caption}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {studio.map((item, i) => (
+            <Reveal key={item.src} delay={i * 120}>
+              <figure className="group">
+                <div className="overflow-hidden rounded-md border border-border">
+                  <img
+                    src={item.src}
+                    srcSet={item.srcSet}
+                    sizes="(min-width: 640px) 45vw, 92vw"
+                    alt={item.alt}
+                    width={900}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[3/2] w-full object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+                  {item.caption}
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
         </div>
       </section>
 
