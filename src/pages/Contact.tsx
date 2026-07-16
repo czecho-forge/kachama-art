@@ -1,10 +1,20 @@
 import { useState, type FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import Seo from "@/components/Seo";
 import WeaveDivider from "@/components/WeaveDivider";
 import { cn } from "@/lib/utils";
 
 const EMAIL = "kachama.art@gmail.com";
+
+// EmailJS — connected to kachama.art@gmail.com. TEMPLATE_NOTIFY notifies the
+// studio of a new inquiry; TEMPLATE_AUTOREPLY confirms receipt to the sender.
+const SERVICE_ID = "service_bg0sw8t";
+const TEMPLATE_NOTIFY = "template_f71labo";
+const TEMPLATE_AUTOREPLY = "template_3ujvwf8";
+const PUBLIC_KEY = "ATf7yHZn1QYI7m3OJ";
+
+emailjs.init({ publicKey: PUBLIC_KEY });
 
 const intents = [
   {
@@ -30,6 +40,7 @@ const intents = [
 ] as const;
 
 type IntentId = (typeof intents)[number]["id"];
+type Status = "idle" | "sending" | "sent" | "error";
 
 export default function Contact() {
   const [searchParams] = useSearchParams();
@@ -41,24 +52,37 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [organization, setOrganization] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
 
   const active = intents.find((i) => i.id === intent)!;
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const subject = `${active.subject} — ${name}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      organization && `Organization: ${organization}`,
-      "",
+    setStatus("sending");
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      organization: organization || "—",
       message,
-    ]
-      .filter(Boolean)
-      .join("\n");
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+      inquiry_type: active.label,
+    };
+
+    try {
+      // The notification to the studio is the critical path.
+      await emailjs.send(SERVICE_ID, TEMPLATE_NOTIFY, templateParams);
+      // The visitor's auto-reply is best-effort — don't fail the whole
+      // submission if only this one has a hiccup.
+      emailjs.send(SERVICE_ID, TEMPLATE_AUTOREPLY, templateParams).catch(() => {});
+
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setOrganization("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -75,6 +99,20 @@ export default function Contact() {
       <p className="mt-4 text-center text-sm uppercase tracking-widest text-muted-foreground">
         Showroom · Chiang Mai · By Appointment
       </p>
+
+      <div className="mt-10 overflow-hidden rounded-md border border-border">
+        <img
+          src="/images/contact/gallery-1000.webp"
+          srcSet="/images/contact/gallery-1000.webp 1000w, /images/contact/gallery-2000.webp 2000w"
+          sizes="(min-width: 640px) 42rem, 92vw"
+          alt="Kachama's handwoven wall hangings on display in her Chiang Mai gallery space"
+          width={1000}
+          height={563}
+          loading="lazy"
+          decoding="async"
+          className="aspect-video w-full object-cover"
+        />
+      </div>
 
       {/* Intent selector */}
       <fieldset className="mt-12">
@@ -106,7 +144,7 @@ export default function Contact() {
         <div className="grid gap-6 sm:grid-cols-2">
           <div>
             <label htmlFor="name" className="block text-sm font-medium">
-              Name
+              Name <span className="text-primary">*</span>
             </label>
             <input
               id="name"
@@ -119,7 +157,7 @@ export default function Contact() {
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium">
-              Email
+              Email <span className="text-primary">*</span>
             </label>
             <input
               id="email"
@@ -148,7 +186,7 @@ export default function Contact() {
         </div>
         <div>
           <label htmlFor="message" className="block text-sm font-medium">
-            Message
+            Message <span className="text-primary">*</span>
           </label>
           <textarea
             id="message"
@@ -161,14 +199,35 @@ export default function Contact() {
         </div>
         <button
           type="submit"
-          className="w-full rounded-md bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto sm:px-8"
+          disabled={status === "sending"}
+          className="w-full rounded-md bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-md sm:w-auto sm:px-8"
         >
-          Send Inquiry
+          {status === "sending" ? "Sending…" : "Send Inquiry"}
         </button>
-        <p className="text-xs text-muted-foreground">
-          Sending opens your email app with the message prepared — nothing is
-          stored on this site.
-        </p>
+
+        {status === "sent" && (
+          <p className="rounded-md bg-secondary px-4 py-3 text-sm text-foreground">
+            Thank you — your inquiry has been sent. A confirmation email is on
+            its way to you now, and the studio will follow up personally.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="rounded-md border border-primary/30 bg-primary/5 px-4 py-3 text-sm text-foreground">
+            Something went wrong sending your inquiry. Please email directly
+            at{" "}
+            <a href={`mailto:${EMAIL}`} className="text-primary underline">
+              {EMAIL}
+            </a>{" "}
+            instead.
+          </p>
+        )}
+
+        {status === "idle" && (
+          <p className="text-xs text-muted-foreground">
+            Your message is sent directly to the studio — nothing is stored
+            on this site.
+          </p>
+        )}
       </form>
 
       <div className="mt-14 rounded-md bg-secondary px-6 py-8 text-sm leading-relaxed text-muted-foreground">

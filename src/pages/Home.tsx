@@ -55,6 +55,13 @@ const studio = [
     caption: "Threading silk cocoons",
   },
   {
+    src: "/images/home/opt/carving-wood-900.webp",
+    srcSet:
+      "/images/home/opt/carving-wood-900.webp 900w, /images/home/opt/carving-wood-1800.webp 1800w",
+    alt: "Close-up of a gold-gilded carved wooden loom tool in Kachama's studio",
+    caption: "Carving the wood",
+  },
+  {
     src: "/images/home/opt/studio-book-900.webp",
     srcSet:
       "/images/home/opt/studio-book-900.webp 900w, /images/home/opt/studio-book-1800.webp 1800w",
