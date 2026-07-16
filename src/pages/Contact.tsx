@@ -80,7 +80,10 @@ export default function Contact() {
       setEmail("");
       setOrganization("");
       setMessage("");
-    } catch {
+    } catch (err) {
+      // Surfaced to the console only — helps diagnose EmailJS config issues
+      // (e.g. an origin allowlist rejecting a non-production domain).
+      console.error("EmailJS send failed:", err);
       setStatus("error");
     }
   }
@@ -219,13 +222,6 @@ export default function Contact() {
               {EMAIL}
             </a>{" "}
             instead.
-          </p>
-        )}
-
-        {status === "idle" && (
-          <p className="text-xs text-muted-foreground">
-            Your message is sent directly to the studio — nothing is stored
-            on this site.
           </p>
         )}
       </form>
