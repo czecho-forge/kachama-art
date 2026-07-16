@@ -15,6 +15,26 @@ const featured = [
     src: "/images/projects/project-5.jpg",
     alt: "Songs of My Soul (2016) handwoven wall hanging, Rayavadee Resort, Krabi",
   },
+  {
+    src: "/images/home/home-7.jpg",
+    alt: "Kachama Perez at her traditional loom, backlit in golden hour light, Chiang Mai, Thailand",
+  },
+  {
+    src: "/images/home/home-8.jpg",
+    alt: "Kachama Perez working the shuttle at her wooden loom, Chiang Mai, Thailand",
+  },
+  {
+    src: "/images/home/home-9.jpg",
+    alt: "Kachama Perez threading silk cocoons onto the loom in her open-air workshop",
+  },
+  {
+    src: "/images/home/home-10.jpg",
+    alt: "Kachama Perez reviewing a reference book of traditional textile designs in her studio",
+  },
+  {
+    src: "/images/home/home-11.jpg",
+    alt: "Detail of textile design sketches and reference imagery in Kachama's studio",
+  },
 ];
 
 export default function Home() {
