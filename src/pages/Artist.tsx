@@ -8,8 +8,8 @@ const personJsonLd = {
   "@type": "Person",
   name: "Kachama Perez",
   jobTitle: "Textile Artist",
-  url: "https://kachama.art/artist",
-  image: "https://kachama.art/images/artist/hero.jpg",
+  url: "https://studiokachama.com/artist",
+  image: "https://studiokachama.com/images/artist/hero.jpg",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Chiang Mai",

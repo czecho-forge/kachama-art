@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kachama.art/sitemap.xml
+Sitemap: https://studiokachama.com/sitemap.xml

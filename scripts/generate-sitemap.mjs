@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 import { createClient } from "@sanity/client";
 
-const SITE_URL = "https://kachama.art";
+const SITE_URL = "https://studiokachama.com";
 
 const staticRoutes = ["/", "/concept", "/artist", "/projects", "/contact", "/journal"];
 
