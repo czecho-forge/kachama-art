@@ -379,8 +379,16 @@ function Chip({ label, onRemove }: { label: string; onRemove: () => void }) {
 
 function PieceCard({ piece, eager }: { piece: Piece; eager: boolean }) {
   const [cover, alt] = piece.photos;
+  // The second photo is only fetched once a mouse hovers or the keyboard
+  // focuses the card, so phones (no hover) never download it.
+  const [wantAlt, setWantAlt] = useState(false);
   return (
-    <Link to={`/showroom/${piece.id}`} className="group block focus:outline-none">
+    <Link
+      to={`/showroom/${piece.id}`}
+      className="group block focus:outline-none"
+      onPointerEnter={(e) => e.pointerType === "mouse" && setWantAlt(true)}
+      onFocus={() => setWantAlt(true)}
+    >
       <div className="relative aspect-[2/3] overflow-hidden bg-secondary group-focus-visible:ring-2 group-focus-visible:ring-primary">
         <img
           src={photoSrc(piece.id, cover, 800)}
@@ -392,13 +400,12 @@ function PieceCard({ piece, eager }: { piece: Piece; eager: boolean }) {
           className="h-full w-full object-cover"
         />
         {/* Second photo fades in on hover to preview another view of the piece. */}
-        {alt && (
+        {alt && wantAlt && (
           <img
             src={photoSrc(piece.id, alt, 800)}
             srcSet={photoSrcSet(piece.id, alt)}
             sizes="(min-width: 1024px) 25vw, 50vw"
             alt=""
-            loading="lazy"
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
