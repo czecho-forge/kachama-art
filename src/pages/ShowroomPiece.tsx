@@ -314,7 +314,7 @@ function PieceView({
           <h2 className="font-display text-2xl font-medium">
             More in {colourById[piece.colours[0]].label.toLowerCase()}
           </h2>
-          <ul className="-mx-4 mt-6 flex snap-x gap-4 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+          <ul className="-mx-4 mt-6 flex snap-x gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 sm:-mx-6 sm:scroll-px-6 sm:px-6 lg:mx-0 lg:scroll-px-0 lg:px-0">
             {related.map((p) => (
               <li key={p.id} className="w-40 shrink-0 snap-start sm:w-52">
                 <Link to={`/showroom/${p.id}`} className="group block">
