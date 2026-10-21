@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import Seo from "@/components/Seo";
 import WeaveDivider from "@/components/WeaveDivider";
 import { cn } from "@/lib/utils";
+import { pieces } from "@/data/showroom";
 
 const EMAIL = "kachama.art@gmail.com";
 
@@ -45,13 +46,23 @@ type Status = "idle" | "sending" | "sent" | "error";
 export default function Contact() {
   const [searchParams] = useSearchParams();
   const initial = searchParams.get("intent");
+  // Showroom "Inquire" links pass ?piece=<id>; start the message for them.
+  const piece = pieces.find((p) => p.id === searchParams.get("piece"));
   const [intent, setIntent] = useState<IntentId>(
-    intents.some((i) => i.id === initial) ? (initial as IntentId) : "gallery"
+    piece
+      ? "collector"
+      : intents.some((i) => i.id === initial)
+        ? (initial as IntentId)
+        : "gallery"
   );
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [organization, setOrganization] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(
+    piece
+      ? `I'm interested in ${piece.title} from the Showroom (studiokachama.com/showroom/${piece.id}).\n\n`
+      : ""
+  );
   const [status, setStatus] = useState<Status>("idle");
 
   const active = intents.find((i) => i.id === intent)!;

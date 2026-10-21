@@ -1,9 +1,12 @@
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { createClient } from "@sanity/client";
 
 const SITE_URL = "https://studiokachama.com";
 
-const staticRoutes = ["/", "/concept", "/artist", "/projects", "/contact", "/journal"];
+const staticRoutes = ["/", "/concept", "/artist", "/showroom", "/projects", "/contact", "/journal"];
+
+const showroomPhotos = JSON.parse(await readFile("src/data/showroom-photos.json", "utf8"));
+const showroomRoutes = Object.keys(showroomPhotos).map((id) => `/showroom/${id}`);
 
 async function fetchJournalRoutes() {
   const projectId = process.env.VITE_SANITY_PROJECT_ID;
@@ -22,7 +25,7 @@ async function fetchJournalRoutes() {
   return slugs.map((slug) => `/journal/${slug}`);
 }
 
-const routes = [...staticRoutes, ...(await fetchJournalRoutes())];
+const routes = [...staticRoutes, ...showroomRoutes, ...(await fetchJournalRoutes())];
 
 const urls = routes
   .map((route) => `  <url>\n    <loc>${SITE_URL}${route}</loc>\n  </url>`)

@@ -5,6 +5,8 @@ import Home from "@/pages/Home";
 import Concept from "@/pages/Concept";
 import Artist from "@/pages/Artist";
 import Projects from "@/pages/Projects";
+import Showroom from "@/pages/Showroom";
+import ShowroomPiece from "@/pages/ShowroomPiece";
 import Journal from "@/pages/Journal";
 import JournalPost from "@/pages/JournalPost";
 import Contact from "@/pages/Contact";
@@ -19,6 +21,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/concept" element={<Concept />} />
             <Route path="/artist" element={<Artist />} />
+            <Route path="/showroom" element={<Showroom />} />
+            <Route path="/showroom/:id" element={<ShowroomPiece />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalPost />} />
@@ -40,6 +44,12 @@ export default function App() {
                 aria-label="Footer"
                 className="flex flex-col gap-2 text-sm tracking-widest"
               >
+                <Link
+                  to="/showroom"
+                  className="transition-colors hover:text-indigo-foreground/70"
+                >
+                  SHOWROOM
+                </Link>
                 <Link
                   to="/projects"
                   className="transition-colors hover:text-indigo-foreground/70"

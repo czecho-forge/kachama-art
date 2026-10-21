@@ -47,6 +47,10 @@ export default {
           "0%": { opacity: "0", transform: "translateY(28px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "caption-in": {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
         "fade-in": {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
@@ -60,6 +64,10 @@ export default {
         // easeOutExpo-style curve: quick start, long silky deceleration
         "fade-up": "fade-up 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fade-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        // overlays and panels the visitor is waiting on
+        "fade-quick": "fade-in 200ms ease-out forwards",
+        // the stack's caption swaps on every step, so it settles quickly
+        "caption-in": "caption-in 450ms cubic-bezier(0.16, 1, 0.3, 1) both",
         // slow settle for hero imagery — a restrained Ken Burns landing
         "hero-in": "hero-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
