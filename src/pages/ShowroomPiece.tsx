@@ -50,6 +50,8 @@ function PieceView({
   const [armed, setArmed] = useState(false);
   const stack = useRef<HTMLDivElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
+  const inquire = useRef<HTMLAnchorElement>(null);
+  const [barOn, setBarOn] = useState(false);
   const photos = piece.photos;
   const count = photos.length;
 
@@ -80,6 +82,21 @@ function PieceView({
     return () => {
       io.disconnect();
       root.classList.remove("snap-piece");
+    };
+  }, []);
+
+  // Phones: a bottom Inquire bar stands in whenever the page's own Inquire
+  // button is off screen. The body gets matching bottom room (see index.css)
+  // so the bar never covers the end of the footer.
+  useEffect(() => {
+    const cta = inquire.current;
+    if (!cta) return;
+    document.body.classList.add("has-inquire-bar");
+    const io = new IntersectionObserver(([e]) => setBarOn(!e.isIntersecting));
+    io.observe(cta);
+    return () => {
+      io.disconnect();
+      document.body.classList.remove("has-inquire-bar");
     };
   }, []);
 
@@ -264,6 +281,7 @@ function PieceView({
           </dl>
 
           <Link
+            ref={inquire}
             to={`/contact?piece=${piece.id}`}
             className="mt-8 flex w-full items-center justify-center rounded-md bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
           >
@@ -315,6 +333,40 @@ function PieceView({
           </ul>
         </div>
       )}
+
+      {/* Phone Inquire bar */}
+      <div
+        className={cn(
+          "fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background shadow-[0_-12px_32px_-20px_hsl(215_28%_17%/0.35)] transition-transform duration-300 ease-out-expo motion-reduce:transition-none lg:hidden",
+          barOn ? "translate-y-0" : "translate-y-full"
+        )}
+        style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+        aria-hidden={!barOn}
+        inert={!barOn}
+      >
+        <div className="mx-auto flex max-w-[90rem] items-center gap-4 px-4 pt-3 sm:px-6">
+          <div className="min-w-0 flex-1">
+            <p className="truncate font-display text-lg font-medium leading-tight">{piece.title}</p>
+            <p className="mt-0.5 flex items-center gap-1.5 text-xs text-muted-foreground">
+              {piece.colours.map((c) => (
+                <span
+                  key={c}
+                  className="h-2.5 w-2.5 rounded-full border border-black/10"
+                  style={{ background: colourById[c].swatch }}
+                  aria-hidden
+                />
+              ))}
+              <span className="truncate">{colourNames}</span>
+            </p>
+          </div>
+          <Link
+            to={`/contact?piece=${piece.id}`}
+            className="shrink-0 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-md transition-transform active:scale-[0.98]"
+          >
+            Inquire
+          </Link>
+        </div>
+      </div>
 
       {zoomAt !== null && (
         <ZoomViewer
